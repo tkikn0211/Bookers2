@@ -1,0 +1,28 @@
+<%= flash[:notice] %>
+<main>
+   <div class="container px-5 px-sm-0">
+      <div class="row">
+        <div class="col-md-3">
+        <h2>User info</h2>
+        </div>
+        <div class="col-md-8 offset-md-1">
+         <h2>Book detail </h2>
+         <table C
+           <tbody>
+              <tr>
+                <td><%= image_tag @book.user.get_profile_image("40×40") %></td>
+                <td><%= @book.title %></td>
+                <td><%= @book.body %></td>
+                <td>
+                  <% if @book.user == current_user %>
+                    <%= link_to "Edit", edit_book_path(@book.id) %>
+                    <%= link_to "Destroy", book_path(@book), method: :delete %>
+                  <% end %>
+                </td>
+              </tr>
+           </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</main>
