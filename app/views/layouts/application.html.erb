@@ -24,23 +24,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          
+
         <% if user_signed_in? %>
           <li class="nav-item">
              <i class="fas fa-home"></i>
-             <%= link_to 'Home',:style=>"text-decoration:none; color:white"%>
+             <%= link_to 'Home', user_path(current_user.id) , :style=>"text-decoration:none; color:white"%>
           </li>
-          
+
           <li class="nav-item">
             <i class="fas fa-users"></i>
-            <%= link_to "Users", "/users",class:"users" ,:style=>"text-decoration:none; color:white "%>
+            <%= link_to "Users", users_path, class:"users" ,:style=>"text-decoration:none; color:white "%>
           </li>
-          
+
           <li class="nav-item">
             <i class="fas fa-book-open"></i>
             <%= link_to 'Books', books_path ,:style=>"text-decoration:none; color:white "%>
           </li>
-          
+
           <li class="nav-item">
             <i class="fas fa-sign-out-alt"></i>
             <%= link_to "Log out", destroy_user_session_path, method: :delete ,:style=>"text-decoration:none; color:white "%>
@@ -49,30 +49,30 @@
        <% else %>
          <li class="nav-item">
             <i class="fas fa-home"></i>
-            <%= link_to"Home",:style=>"text-decoration:none; color:white;fas fa-home"%>
+            <%= link_to"Home", root_path, :style=>"text-decoration:none; color:white;fas fa-home"%>
          </li>
-         
+
          <li class="nav-item">
            <i class="fas fa-link"></i>
-           <%= link_to"About","/homes/about" ,:style=>"text-decoration:none; color:white "%>
+           <%= link_to"About", about_path ,:style=>"text-decoration:none; color:white "%>
          </li>
-         
+
          <li class="nav-item">
            <i class="fas fa-user-plus"></i>
            <%= link_to "Sign up", new_user_registration_path ,:style=>"text-decoration:none; color:white "%>
          </li>
-         
+
          <li class="nav-item">
            <i class="fas fa-sign-in-alt"></i>
-           <%= link_to "Login", new_user_session_path ,:style=>"text-decoration:none; color:white "%>
+           <%= link_to "Log in", new_user_session_path ,:style=>"text-decoration:none; color:white "%>
           </li>
        <% end %>
       </ul>
      </nav>
     </div>
  </header>
-    
-    
+
+
     <%= yield %>
     <footer>
       <div class="container mt-5">

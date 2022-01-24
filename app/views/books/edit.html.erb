@@ -18,7 +18,7 @@
            <label for="user_Introduction">Opinion</label><br>
            <%= f.text_area :body %><br>
            <%= f.submit "Update Book" %><br>
-           <%= link_to "show",book_path %>
+           <%= link_to "Show", book_path(@book) %>
            ｜
            <%= link_to "Back", books_path %>
          <% end %>

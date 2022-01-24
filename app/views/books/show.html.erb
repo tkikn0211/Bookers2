@@ -3,20 +3,28 @@
    <div class="container px-5 px-sm-0">
       <div class="row">
         <div class="col-md-3">
-        <h2>User info</h2>
+         <%= render 'template/user_info', user:@user %>
+         <%= render 'template/new_book', Book:@booknew %>
         </div>
         <div class="col-md-8 offset-md-1">
          <h2>Book detail </h2>
-         <table C
+         <table class="table table-striped">
            <tbody>
               <tr>
-                <td><%= image_tag @book.user.get_profile_image("40×40") %></td>
-                <td><%= @book.title %></td>
+                <td>
+                  <% if @book.user.profile_image.attached? %>
+                    <%= image_tag @book.user.profile_image, size: "40x40" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "40x40" %>
+                  <% end %>
+                  <%= link_to @user.name, user_path(@user) %>
+                </tb>
+                <td><%= link_to  @book.title  %></td>
                 <td><%= @book.body %></td>
                 <td>
-                  <% if @book.user == current_user %>
-                    <%= link_to "Edit", edit_book_path(@book.id) %>
-                    <%= link_to "Destroy", book_path(@book), method: :delete %>
+                  <% if @book.user.id == current_user.id %>
+                    <%= link_to "Edit", edit_book_path(@book.id), class: 'btn btn-success' %>
+                    <%= link_to "Destroy", book_path(@book), method: :delete, class: 'btn btn-danger'  %>
                   <% end %>
                 </td>
               </tr>
